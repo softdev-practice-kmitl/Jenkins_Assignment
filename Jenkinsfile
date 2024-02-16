@@ -28,7 +28,7 @@ pipeline {
           git branch: 'main', url: 'https://github.com/softdev-practice-kmitl/Jenkins_Robot.git'
         }
         echo 'Runing Robot'
-        sh 'cd ./robot && robot ./test-api.robot'
+        sh 'cd ./robot && python3 -m robot ./test-api.robot'
       }
     }
     stage('Building Image ️') {
