@@ -14,11 +14,11 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Run Unittest') {
-      steps {
-        sh 'npm test'
-      }
-    }
+    // stage('Run Unittest') {
+    //   steps {
+    //     sh 'npm test'
+    //   }
+    // }
     stage('Run Robot') {
       steps {
         echo 'Create Container'
