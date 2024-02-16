@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Building Image ️') {
       steps {
-        sh 'docker build -t jenkins-assignment . && docker tag jenkins-assignment cheiby/jenkins-assignment:lastest'
+        sh 'docker build -t cheiby/jenkins-assingment:lastest'
       }
     }
     stage('Push ⬆️') {
