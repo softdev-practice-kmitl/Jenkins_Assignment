@@ -7,6 +7,7 @@ pipeline {
     stage('Clone') {
       steps {
         git branch: 'main', url: 'https://github.com/softdev-practice-kmitl/Jenkins_Assignment.git'
+        sh 'whoami'
       }
     }
     stage('Install Packet') {
@@ -16,7 +17,7 @@ pipeline {
     }
     stage('Run Unittest') {
       steps {
-        sh 'npm test'
+        sh 'docker stop $(docker ps -a -q) && npm test'
       }
     }
     stage('Run Robot') {
