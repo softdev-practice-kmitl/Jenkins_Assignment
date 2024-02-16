@@ -22,7 +22,7 @@ pipeline {
     stage('Run Robot') {
       steps {
         echo 'Create Container'
-        sh 'docker compose -f ./compose.dev.yaml up -d --build'
+        sh 'docker compose -f ./docker-compose.dev.yaml up -d --build'
         echo 'Cloning Robots'
         dir('./robot/') {
           git branch: 'main', url: 'https://github.com/softdev-practice-kmitl/Jenkins_Robot.git'
@@ -44,7 +44,7 @@ pipeline {
     stage('Clean Workspace') {
       steps {
         echo 'DownTime'
-        sh 'docker compose -f ./compose.dev.yaml down'
+        sh 'docker compose -f ./docker-compose.dev.yaml down'
         sh 'docker system prune -a -f'
       }
     }
