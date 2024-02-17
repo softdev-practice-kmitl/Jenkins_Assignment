@@ -55,7 +55,7 @@ pipeline {
         label 'vm3'
       }
       steps {
-        sh 'docker compose up -d --build'
+        sh 'docker compose down && docker system prune -a -f && docker compose up -d --build'
       }
     }
   }
