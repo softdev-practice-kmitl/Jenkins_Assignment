@@ -7,8 +7,7 @@ const plusHandler = (req, res) => {
 };
 
 app.get("/", (req, res) => res.send("Hello World!"))
-app.get("/kuy", (req, res) => res.send("kuyyyy2"))
-app.get("/getcode", (req, res) => res.send("Oot the most handsome person in the universe!!!"))
+app.get("/getcode", (req, res) => res.send("Oot the most handsome person in the world!!!"))
 app.get("/plus/:num1/:num2",plusHandler)
 app.listen(3001, () => console.log("Example app listening on port 3001!"))
 
