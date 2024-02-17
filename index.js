@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 
 const plusHandler = (req, res) => {
-    const result = parseInt(req.params.num1) + parseInt(req.params.num2);
+    const result = parseInt(req.params.num1) - parseInt(req.params.num2);
     res.json(result);
 };
 
