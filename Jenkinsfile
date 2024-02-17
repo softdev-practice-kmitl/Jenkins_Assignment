@@ -18,7 +18,7 @@ pipeline {
     stage('Run Unittest') {
       steps {
         sh 'whoami'
-        sh 'docker stop $(docker ps -a -q) && npm test'
+        sh 'npm test'
       }
     }
     stage('Run Robot') {
