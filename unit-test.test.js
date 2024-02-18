@@ -1,4 +1,4 @@
-const { plusHandler } = require('./index'); // Import your Express route handler function
+const { plusHandler,server } = require('./index'); // Import your Express route handler function
 
 describe('Plus endpoint handler', () => {
   test('returns the sum of two numbers passed in parameters', () => {
@@ -32,4 +32,8 @@ describe('Plus endpoint handler', () => {
 
     expect(res.json).toHaveBeenCalledWith(NaN);
   });
+});
+
+afterAll(done => {
+  server.close(done);
 });
