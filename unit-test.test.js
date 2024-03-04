@@ -1,37 +1,51 @@
-const { plusHandler,server } = require('./index'); // Import your Express route handler function
+const { isPrimeHandler, server } = require('./index');
 
-describe('Plus endpoint handler', () => {
-  test('returns the sum of two numbers passed in parameters', () => {
+describe('is_prime endpoint handler', () => {
+  test('true_when_x_is_17', () => {
     const req = {
       params: {
-        num1: '5',
-        num2: '10'
+        x: '17'
       }
     };
     const res = {
       json: jest.fn()
     };
 
-    plusHandler(req, res);
+    isPrimeHandler(req, res);
 
-    expect(res.json).toHaveBeenCalledWith(15);
+    expect(res.json).toHaveBeenCalledWith({ isPrime: true });
   });
 
-  test('returns NaN if parameters are not valid numbers', () => {
+  test('false_when_x_is_36', () => {
     const req = {
       params: {
-        num1: 'abc',
-        num2: 'def'
+        x: '36'
       }
     };
     const res = {
       json: jest.fn()
     };
 
-    plusHandler(req, res);
+    isPrimeHandler(req, res);
 
-    expect(res.json).toHaveBeenCalledWith(NaN);
+    expect(res.json).toHaveBeenCalledWith({ isPrime: false });
   });
+
+  test('true_when_x_is_13219', () => {
+    const req = {
+      params: {
+        x: '13219'
+      }
+    };
+    const res = {
+      json: jest.fn()
+    };
+
+    isPrimeHandler(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({ isPrime: true });
+  });
+
 });
 
 afterAll(done => {

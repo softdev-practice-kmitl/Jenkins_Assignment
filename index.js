@@ -1,17 +1,29 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 
-const plusHandler = (req, res) => {
-    const result = parseInt(req.params.num1) + parseInt(req.params.num2);
-    res.json(result);
+const isPrimeHandler = (req, res) => {
+    const x = parseInt(req.params.x);
+    const isPrime = checkPrime(x);
+    res.json({ isPrime });
 };
 
-app.get("/", (req, res) => res.send("Hello World!"))
-app.get("/getcode", (req, res) => res.send("Oot the most handsome person~~~ sud sud"))
-app.get("/plus/:num1/:num2",plusHandler)
-const server = app.listen(3001, () => console.log("Example app listening on port 3001!"))
+function checkPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/getcode", (req, res) => res.send("Mind is the most beautiful in the world!"))
+app.get("/is_prime/:x", isPrimeHandler);
+
+const server = app.listen(3001, () => console.log("Example app listening on port 3001!"));
 
 module.exports = {
-    plusHandler,
-    server
-}
+    isPrimeHandler,
+    server,
+};
